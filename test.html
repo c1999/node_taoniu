@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p onclick="mesgNotice()">桌面提醒测试</p>
+    <script>
+        function mesgNotice(){
+            if(window.Notification && Notification.permission !== "denied") {
+                Notification.requestPermission(function(status) {
+                    var notice_ = new Notification('新的消息', { body: '朱佳伟牛逼',icon:'2.jpg'});
+                    notice_.onclick = function() {//单击消息提示框，进入浏览器页面
+                        window.focus();
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

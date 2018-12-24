@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "POST",
-    "url": "127.0.0.1:3001/game/gameOver",
+    "url": "tn.ykplay.com/game/gameOver",
     "title": "游戏结算接口",
     "group": "Game",
     "version": "0.0.1",
@@ -81,11 +81,144 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Game",
-    "name": "Post1270013001GameGameover"
+    "name": "PostTnYkplayComGameGameover"
   },
   {
     "type": "POST",
-    "url": "127.0.0.1:3001/game/PayString",
+    "url": "tn.ykplay.com/game/getProfit",
+    "title": "观看视频增加利润接口",
+    "group": "Game",
+    "version": "0.0.1",
+    "description": "<p>观看视频增加利润接口</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>用户id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求样例：",
+          "content": "id=1370127",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "result",
+            "description": "<p>0 正确 -1 失败 -2 服务端接口有问题</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "成功提交",
+          "content": "{\n     result : 0,\n     msg : `成功`\n}",
+          "type": "json"
+        },
+        {
+          "title": "失败提交",
+          "content": "{\n     result : -1,\n     msg : `服务端观看视频增加利润接口出错`\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "myapp/apidoc.js",
+    "groupTitle": "Game",
+    "name": "PostTnYkplayComGameGetprofit"
+  },
+  {
+    "type": "POST",
+    "url": "tn.ykplay.com/game/judgeGame",
+    "title": "判断是否该关卡红包总额以及能否套中接口",
+    "group": "Game",
+    "version": "0.0.1",
+    "description": "<p>判断是否该关卡红包总额以及能否套中接口</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>用户id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "customs",
+            "description": "<p>关卡</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求样例：",
+          "content": "id=1370127&customs=1",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "result",
+            "description": "<p>0 正确 -1 失败 -2 服务端接口有问题</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息 redPacket 红包总额 ，integral积分总额 ，redPacketCount红包个数 ，Gold金币 ，judegeRedPacket是否能套中红包牛，judegeIntegral是否能套中积分牛</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "成功提交",
+          "content": "{\n    \"result\": 0,\n    \"msg\": {\n        \"redPacket\": 0.1,\n        \"integral\": 350,\n        \"redPacketCount\": 1,\n        \"Gold\": 350,\n        \"judegeRedPacket\": false,\n        \"judegeIntegral\": false\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "失败提交",
+          "content": "{\n     result : -1,\n     msg : `服务端判断是否该关卡红包总额以及能否套中接口出错`\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "myapp/apidoc.js",
+    "groupTitle": "Game",
+    "name": "PostTnYkplayComGameJudgegame"
+  },
+  {
+    "type": "POST",
+    "url": "tn.ykplay.com/game/PayString",
     "title": "购买绳子",
     "group": "Game",
     "version": "0.0.1",
@@ -158,11 +291,140 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Game",
-    "name": "Post1270013001GamePaystring"
+    "name": "PostTnYkplayComGamePaystring"
   },
   {
     "type": "POST",
-    "url": "127.0.0.1:3001/game/Tack",
+    "url": "tn.ykplay.com/game/prize",
+    "title": "兑换商品",
+    "group": "Game",
+    "version": "0.0.1",
+    "description": "<p>兑换商品</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>用户id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pid",
+            "description": "<p>商品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>收件人姓名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "number",
+            "description": "<p>用户电话</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "site",
+            "description": "<p>用户地址</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求样例：",
+          "content": "id=1370127&name=123&pid=2&number=432&site=555",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "result",
+            "description": "<p>0 正确 -1 失败 -2 服务端接口有问题</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "成功提交",
+          "content": "{\n    \"result\": 0,\n    \"msg\": \"兑换成功\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "失败提交",
+          "content": "{\n    \"result\": -1,\n    \"msg\": \"积分不足\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "myapp/apidoc.js",
+    "groupTitle": "Game",
+    "name": "PostTnYkplayComGamePrize"
+  },
+  {
+    "type": "POST",
+    "url": "tn.ykplay.com/game/selectPrize",
+    "title": "查看可兑换奖品",
+    "group": "Game",
+    "version": "0.0.1",
+    "description": "<p>查看可兑换奖品</p>",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "result",
+            "description": "<p>0 正确 -1 失败 -2 服务端接口有问题</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>商品具体信息</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "成功提交",
+          "content": "{\n    \"result\": 0,\n    \"msg\": [\n        {\n            \"pid\": 1,\n            \"name\": \"苹果x\",\n            \"msg\": \"有刘海的苹果\",\n            \"img\": \"test\",\n            \"integral\": 1000\n        },\n        {\n            \"pid\": 2,\n            \"name\": \"充电宝\",\n            \"msg\": \"超级充电宝\",\n            \"img\": \"test\",\n            \"integral\": 800\n        },\n        {\n            \"pid\": 3,\n            \"name\": \"蓝牙耳机\",\n            \"msg\": \"价值80元的蓝牙耳机\",\n            \"img\": \"test\",\n            \"integral\": 800\n        },\n        {\n            \"pid\": 4,\n            \"name\": \"话费50元\",\n            \"msg\": \"充话费不送东西\",\n            \"img\": \"test\",\n            \"integral\": 500\n        },\n        {\n            \"pid\": 5,\n            \"name\": \"幸运盒子\",\n            \"msg\": \"价值30幸运盒子\",\n            \"img\": \"test\",\n            \"integral\": 300\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "myapp/apidoc.js",
+    "groupTitle": "Game",
+    "name": "PostTnYkplayComGameSelectprize"
+  },
+  {
+    "type": "POST",
+    "url": "tn.ykplay.com/game/Tack",
     "title": "提交任务",
     "group": "Game",
     "version": "0.0.1",
@@ -228,11 +490,11 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Game",
-    "name": "Post1270013001GameTack"
+    "name": "PostTnYkplayComGameTack"
   },
   {
     "type": "POST",
-    "url": "127.0.0.1:1999/user/getGold",
+    "url": "tn.ykplay.com/user/getGold",
     "title": "每日用户领取金币",
     "group": "Users",
     "version": "0.0.1",
@@ -291,11 +553,11 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Users",
-    "name": "Post1270011999UserGetgold"
+    "name": "PostTnYkplayComUserGetgold"
   },
   {
     "type": "POST",
-    "url": "127.0.0.1:1999/user/login",
+    "url": "tn.ykplay.com/user/login",
     "title": "用户登陆",
     "group": "Users",
     "version": "0.0.1",
@@ -342,11 +604,11 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Users",
-    "name": "Post1270011999UserLogin"
+    "name": "PostTnYkplayComUserLogin"
   },
   {
     "type": "POST",
-    "url": "127.0.0.1:1999/user/sign",
+    "url": "tn.ykplay.com/user/sign",
     "title": "用户签到",
     "group": "Users",
     "version": "0.0.1",
@@ -393,7 +655,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "msg",
-            "description": "<p>签到成功</p>"
+            "description": "<p>签到奖励 描述 现在还没也有确定</p>"
           },
           {
             "group": "200",
@@ -419,6 +681,6 @@ define({ "api": [
     },
     "filename": "myapp/apidoc.js",
     "groupTitle": "Users",
-    "name": "Post1270011999UserSign"
+    "name": "PostTnYkplayComUserSign"
   }
 ] });

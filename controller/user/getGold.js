@@ -48,10 +48,11 @@ exports.getGold =async (req,res)=>{
         }catch (err){
             result = {
                 result : -2,
-                msg : "每日领取金币出错"
+                msg : "服务端每日领取金币出错"
             };
+            log.error(err)
             res.json(result);
-            log.error(`每日领取金币接口出错`)
+            log.error(`服务端每日领取金币接口出错`)
         }
     }
 };

@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/12/11.
  */
 
-/*开始游戏购买绳子
+/*任务接口
  * 所需参数
  * id    用户id
  * customsType 完成任务类型 videoCount 视频 shareCount 分享 grade 等级
@@ -104,7 +104,13 @@ exports.videoTack = async(req,res)=>{
                 res.jsonp(result);
             }
         }catch (err){
-            log.error(`提交任务接口出错`)
+            result = {
+                result : -1,
+                msg : `服务端任务接口接口出错`
+            };
+            res.jsonp(result);
+            log.error(err)
+            log.error(`服务端任务接口接口出错`)
         }
     }
 };

@@ -44,6 +44,7 @@ exports.login = async(req,res)=>{
                     result = await query(`INSERT INTO usermsg (id) VALUES('${userResult[0].id}')`);
                     result = await query(`INSERT INTO dailytask (id) VALUES('${userResult[0].id}')`);
                     result = await query(`INSERT INTO usercustoms (id) VALUES('${userResult[0].id}')`);
+                    result = await query(`INSERT INTO userProfit (id) VALUES('${userResult[0].id}')`);
                     userResult = await query(`SELECT * FROM users INNER JOIN usermsg on users.id=usermsg.id INNER JOIN usercustoms ON users.id=usercustoms.id WHERE users.id = ${userResult[0].id}`)
                     result = {
                         result :0,
@@ -76,7 +77,13 @@ exports.login = async(req,res)=>{
             });
 
         }catch (err){
-            log.error(`登录接口出错啦${err}`)
+            result = {
+                result : -2,
+                msg : "服务端登录接口出错"
+            };
+            log.error(err)
+            res.json(result);
+            log.error(`服务端登录接口出错`)
         }
     }
 };

@@ -53,12 +53,13 @@ exports.sign = async (req,res)=>{
                 res.jsonp(result)
             }
         }catch (err){
+            log.error(err)
             result = {
                 result : -2,
-                msg : "签到接口出错"
+                msg : "服务端签到接口出错"
             };
             res.json(result);
-            log.error(`签到接口出错`)
+            log.error(`服务端签到接口出错`)
         }
     }
 };

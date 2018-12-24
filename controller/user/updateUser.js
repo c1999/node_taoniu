@@ -8,7 +8,7 @@ let util = require('../../utils/util');
 let log = require('../../utils/log');
 let WXBizDataCrypt = require('../../utils/WXBizDataCrypt');
 let dbs = new db();
-/*用户登录所需参数
+/*更新用户信息
  * id 用户id
  *  portrait 头像
  *  wxName 用户名
@@ -44,7 +44,13 @@ exports.updateUser = async(req,res)=>{
             };
             res.jsonp(result)
         }catch (err){
-            log.error(`修改用户信息接口出错啦${err}`)
+            log.error(err)
+            result = {
+                result : -2,
+                msg : "服务端更新用户信息接口出错"
+            };
+            res.json(result);
+            log.error(`服务端更新用户信息接口出错`)
         }
     }
 };

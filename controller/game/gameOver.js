@@ -67,12 +67,13 @@ exports.gameOver = async(req,res)=>{
             };
             res.json(result)
         }catch (err){
+            log.error(err);
             result = {
                 result : -2,
-                msg : "游戏结算接口出错"
+                msg : "服务端游戏结算接口出错"
             };
             res.json(result);
-            log.error(`游戏结算接口出错`)
+            log.error(`服务端游戏结算接口出错`)
         }
     }
 };

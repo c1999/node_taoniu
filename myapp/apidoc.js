@@ -1,6 +1,6 @@
 
 /**
- * @api {POST} 127.0.0.1:1999/user/sign 用户签到
+ * @api {POST} tn.ykplay.com/user/sign 用户签到
  * @apiGroup Users
  * @apiVersion 0.0.1
  * @apiDescription 用于用户签到
@@ -9,7 +9,7 @@
  *                id=123
  * @apiSuccess (200) {String}  result 0 正确 -1 失败 -2 服务端接口有问题
  * @apiSuccess (200) {String} date   周几
- * @apiSuccess (200) {String} msg    签到成功
+ * @apiSuccess (200) {String} msg    签到奖励 描述 现在还没也有确定
  * @apiSuccess (200) {String} weekSign    该星期签到情况
  * @apiSuccessExample {json} 签到成功
  {
@@ -37,7 +37,7 @@
  }
  */
 /**
- * @api {POST} 127.0.0.1:1999/user/getGold 每日用户领取金币
+ * @api {POST} tn.ykplay.com/user/getGold 每日用户领取金币
  * @apiGroup Users
  * @apiVersion 0.0.1
  * @apiDescription 用于每日用户领取金币
@@ -60,7 +60,7 @@
  }
  */
 /**
- * @api {POST} 127.0.0.1:1999/user/login 用户登陆
+ * @api {POST} tn.ykplay.com/user/login 用户登陆
  * @apiGroup Users
  * @apiVersion 0.0.1
  * @apiDescription 用于用户登陆
@@ -73,7 +73,7 @@
 
  */
 /**
- * @api {POST} 127.0.0.1:3001/game/PayString 购买绳子
+ * @api {POST} tn.ykplay.com/game/PayString 购买绳子
  * @apiGroup Game
  * @apiVersion 0.0.1
  * @apiDescription 用于购买绳子
@@ -99,7 +99,7 @@
  */
 
 /**
- * @api {POST} 127.0.0.1:3001/game/gameOver 游戏结算接口
+ * @api {POST} tn.ykplay.com/game/gameOver 游戏结算接口
  * @apiGroup Game
  * @apiVersion 0.0.1
  * @apiDescription 用于游戏结算
@@ -133,7 +133,7 @@
  */
 
 /**
- * @api {POST} 127.0.0.1:3001/game/Tack 提交任务
+ * @api {POST} tn.ykplay.com/game/Tack 提交任务
  * @apiGroup Game
  * @apiVersion 0.0.1
  * @apiDescription 用于提交任务
@@ -166,5 +166,141 @@
  {
      "result": -1,
      "msg": "缺少参数customsType"
+ }
+ */
+
+/**
+ * @api {POST} tn.ykplay.com/game/selectPrize 查看可兑换奖品
+ * @apiGroup Game
+ * @apiVersion 0.0.1
+ * @apiDescription 查看可兑换奖品
+ * @apiSuccess (200) {String} result   0 正确 -1 失败 -2 服务端接口有问题
+ * @apiSuccess (200) {String} msg   商品具体信息
+
+
+ * @apiSuccessExample {json} 成功提交
+ {
+     "result": 0,
+     "msg": [
+         {
+             "pid": 1,
+             "name": "苹果x",
+             "msg": "有刘海的苹果",
+             "img": "test",
+             "integral": 1000
+         },
+         {
+             "pid": 2,
+             "name": "充电宝",
+             "msg": "超级充电宝",
+             "img": "test",
+             "integral": 800
+         },
+         {
+             "pid": 3,
+             "name": "蓝牙耳机",
+             "msg": "价值80元的蓝牙耳机",
+             "img": "test",
+             "integral": 800
+         },
+         {
+             "pid": 4,
+             "name": "话费50元",
+             "msg": "充话费不送东西",
+             "img": "test",
+             "integral": 500
+         },
+         {
+             "pid": 5,
+             "name": "幸运盒子",
+             "msg": "价值30幸运盒子",
+             "img": "test",
+             "integral": 300
+         }
+     ]
+ }
+
+ */
+
+/**
+ * @api {POST} tn.ykplay.com/game/prize 兑换商品
+ * @apiGroup Game
+ * @apiVersion 0.0.1
+ * @apiDescription 兑换商品
+ * @apiParam {String} id  用户id
+ * @apiParam {String} pid  商品id
+ * @apiParam {String} name  收件人姓名
+ * @apiParam {String} number  用户电话
+ * @apiParam {String} site  用户地址
+ * @apiParamExample {json} 请求样例：
+ *                id=1370127&name=123&pid=2&number=432&site=555
+ * @apiSuccess (200) {String} result   0 正确 -1 失败 -2 服务端接口有问题
+ * @apiSuccess (200) {String} msg    信息
+
+
+ * @apiSuccessExample {json} 成功提交
+ {
+     "result": 0,
+     "msg": "兑换成功"
+ }
+ @apiSuccessExample {json} 失败提交
+ {
+     "result": -1,
+     "msg": "积分不足"
+ }
+ */
+/**
+ * @api {POST} tn.ykplay.com/game/getProfit 观看视频增加利润接口
+ * @apiGroup Game
+ * @apiVersion 0.0.1
+ * @apiDescription 观看视频增加利润接口
+ * @apiParam {String} id  用户id
+ * @apiParamExample {json} 请求样例：
+ *                id=1370127
+ * @apiSuccess (200) {String} result   0 正确 -1 失败 -2 服务端接口有问题
+ * @apiSuccess (200) {String} msg    信息
+
+
+ * @apiSuccessExample {json} 成功提交
+ {
+      result : 0,
+      msg : `成功`
+ }
+ @apiSuccessExample {json} 失败提交
+ {
+      result : -1,
+      msg : `服务端观看视频增加利润接口出错`
+ }
+ */
+
+/**
+ * @api {POST} tn.ykplay.com/game/judgeGame 判断是否该关卡红包总额以及能否套中接口
+ * @apiGroup Game
+ * @apiVersion 0.0.1
+ * @apiDescription 判断是否该关卡红包总额以及能否套中接口
+ * @apiParam {String} id  用户id
+ * @apiParam {String} customs  关卡
+ * @apiParamExample {json} 请求样例：
+ *                id=1370127&customs=1
+ * @apiSuccess (200) {String} result   0 正确 -1 失败 -2 服务端接口有问题
+ * @apiSuccess (200) {String} msg    信息 redPacket 红包总额 ，integral积分总额 ，redPacketCount红包个数 ，Gold金币 ，judegeRedPacket是否能套中红包牛，judegeIntegral是否能套中积分牛
+
+
+ * @apiSuccessExample {json} 成功提交
+ {
+     "result": 0,
+     "msg": {
+         "redPacket": 0.1,
+         "integral": 350,
+         "redPacketCount": 1,
+         "Gold": 350,
+         "judegeRedPacket": false,
+         "judegeIntegral": false
+     }
+ }
+ @apiSuccessExample {json} 失败提交
+ {
+      result : -1,
+      msg : `服务端判断是否该关卡红包总额以及能否套中接口出错`
  }
  */
